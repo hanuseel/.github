@@ -1,0 +1,357 @@
+<!-- 개인회원가입 HTML/script -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인회원가입</title>
+    <link rel="stylesheet" media="only screen and (min-width: 825px)" type="text/css" href="../css/layout.css" />
+    <link rel="stylesheet" media="only screen and (max-width: 824px)" type="text/css" href="../css/mobile.css" />
+    <script src="script/jquery-1.12.3.js"></script>
+</head>
+
+<body>
+
+    <div class="join_wrap" id="join">
+        <h3 class="tit">개인회원가입</h3>
+        <ul class="join_box">
+            <li>
+                <p class="mintit">이메일</p>
+                <input type="text" name="" class="joinid" placeholder="이메일을 입력해주세요">
+            </li>
+            <li>
+                <p class="mintit">비밀번호</p>
+                <input type="password" name="" class="joinnpw"  tabindex="2" placeholder="영문,숫자,특수문자를 포함한 8~20자 이내 입력">       
+                <input type="password" name="" class="joinnpw"  tabindex="2" placeholder="비밀번호 재입력">       
+            </li>
+            <li>
+                <p class="mintit">이름</p>
+                <input type="text" name="" class="joinname" placeholder="이름을 입력해주세요">
+            </li>
+            <li>
+                <label for="userSex" class="form-label mintit">성별</label>
+                <div class="toggle" >
+                    <div class="sex_btn radio_male">
+                        <input id="radio-1" type="radio" name="userSex" value="male" checked>
+                        <label for="radio-1">남</label>
+                    </div>
+                                                    
+                    <div class="sex_btn">
+                        <input id="radio-2" type="radio" name="userSex" value="female">
+                        <label for="radio-2">여</label>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <p class="mintit">생년월일</p>
+                <input type="text" maxlength='8' onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="YYYYMMDD">
+            </li>
+            <li>
+                <label for="userarea" class="form-label mintit">근무분야</label>
+                <div class="toggle" >
+                    <div class="area_btn radio_hair">
+                        <input id="radio-3" type="radio" name="userarea" value="hair" checked>
+                        <label for="radio-3">헤어</label>
+                    </div>
+                                                    
+                    <div class="area_btn">
+                        <input id="radio-4" type="radio" name="userarea" value="make">
+                        <label for="radio-4">메이크업</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-5" type="radio" name="userarea" value="nail">
+                        <label for="radio-5">네일아트</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-6" type="radio" name="userarea" value="face">
+                        <label for="radio-6">피부관리</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-7" type="radio" name="userarea" value="pet">
+                        <label for="radio-7">애견미용</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-8" type="radio" name="userarea" value="other">
+                        <label for="radio-8">그 외</label>
+                    </div>
+                </div>
+            </li>
+            <li class="add">
+                <p class="mintit">휴대폰 본인 인증</p>
+                <div class="certify_box">
+                    <input type="text" maxlength='11' onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="'-'빼고 숫자만 입력해주세요"; >
+                    <a href="#" class="certify">인증요청</a>
+                </div>
+            </li>
+            <li class="addplus">
+                <div class="certify_box">
+                    <input type="text" maxlength='11' onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="인증번호를 입력해주세요">
+                    <a href="#" class="certify_add">인증하기</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="agree_box">
+            <li class="all"><p class="mintit">전체동의</p><input type="checkbox" name="" id=""></li>
+            <li class="must"><p class="strong">[필수] &nbsp;개인회원 약관에 동의</p><input type="checkbox" name="" id=""></li>
+            <li class="must"><p class="strong">[필수] &nbsp;개인정보 수집 및 이용에 동의</p><input type="checkbox" name="" id=""></li>
+            <li><p>[선택] &nbsp;위치기반서비스 이용약관에 동의</p><input type="checkbox" name="" id=""></li>
+            <li><p>[선택] &nbsp;마케팅 정보 수신 동의 - 이메일</p><input type="checkbox" name="" id=""></li>
+            <li><p>[선택] &nbsp;마케팅 정보 수신 동의 - SMS/MMS</p><input type="checkbox" name="" id=""></li>
+        </ul>
+        <a href="#" class="finish_btn">다음</a>
+        <a href="../member/join_com.html" class="if_btn">혹시 기업 회원이신가요?</a>
+    </div>
+
+
+
+</body>
+
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const certifyButton = document.querySelector('.add .certify');
+        const addPlus = document.querySelector('.addplus');
+    
+        certifyButton.onclick = function(event) {
+            event.preventDefault(); 
+            addPlus.style.display = 'block'; 
+        };
+    });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const allCheckbox = document.querySelector('.agree_box .all input[type="checkbox"]');
+            const checkboxes = document.querySelectorAll('.agree_box input[type="checkbox"]');
+        
+            allCheckbox.onclick = function() {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = allCheckbox.checked;
+                });
+            };
+        });
+    </script>
+
+
+
+
+<!-- 기업 회원가입 HTML/script -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기업회원가입</title>
+    <link rel="stylesheet" media="only screen and (min-width: 825px)" type="text/css" href="../css/layout.css" />
+    <link rel="stylesheet" media="only screen and (max-width: 824px)" type="text/css" href="../css/mobile.css" />
+    <script src="script/jquery-1.12.3.js"></script>
+</head>
+
+<body>
+
+    <div class="join_wrap" id="join">
+        <h3 class="tit">기업회원가입</h3>
+        <ul class="join_box">
+            <li>
+                <p class="mintit">이메일</p>
+                <input type="text" name="" class="joinid" placeholder="example@example.com">
+            </li>
+            <li>
+                <p class="mintit">비밀번호</p>
+                <input type="password" name="" class="joinnpw"  tabindex="2" placeholder="영문,숫자,특수문자를 포함한 8~20자 이내 입력">       
+                <input type="password" name="" class="joinnpw"  tabindex="2" placeholder="비밀번호 재입력">       
+            </li>
+            <li class="com_num">
+                <p class="mintit">사업자 등록번호</p>
+                <input type="text" class="business-number" maxlength="13" onkeyup="formatBusinessNumber(this)" placeholder="'-'빼고 숫자만 입력해주세요">
+            </li>
+            <li>
+                <p class="mintit">회사명</p>
+                <input type="text" name="" class="comname" placeholder="사업자등록증에 적힌 상호를 입력해주세요.">
+            </li>
+            <li>
+                <p class="mintit">대표자명</p>
+                <input type="text" name="" class="comname" placeholder="사업자등록증에 내의 이름을 입력해주세요.">
+            </li>
+            <li class="adress">
+                <p class="mintit">회사 주소</p>
+                <div class="adress_box">
+                    <input type="text" placeholder="우편번호"; >
+                    <a href="#" class="ad_find">우편번호 찾기</a>
+                </div>
+                <input type="text" placeholder="주소를 입력해주세요."; >
+                <input type="text" placeholder="상세주소를 입력해주세요."; >
+            </li>
+            <li>
+                <label for="userarea" class="form-label mintit">근무분야</label>
+                <div class="toggle" >
+                    <div class="area_btn radio_hair">
+                        <input id="radio-3" type="radio" name="userarea" value="hair" checked>
+                        <label for="radio-3">헤어</label>
+                    </div>
+                                                    
+                    <div class="area_btn">
+                        <input id="radio-4" type="radio" name="userarea" value="make">
+                        <label for="radio-4">메이크업</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-5" type="radio" name="userarea" value="nail">
+                        <label for="radio-5">네일아트</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-6" type="radio" name="userarea" value="face">
+                        <label for="radio-6">피부관리</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-7" type="radio" name="userarea" value="pet">
+                        <label for="radio-7">애견미용</label>
+                    </div>
+
+                    <div class="area_btn">
+                        <input id="radio-8" type="radio" name="userarea" value="other">
+                        <label for="radio-8">그 외</label>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="com_admin">
+                    <p class="mintit">담당자명</p>
+                    <label for="keep"><input type="checkbox" name="keep" id="keep">대표자와 동일</label>
+                </div>
+                <input type="text" name="" class="com_admin_name" placeholder="담당자 이름을 한글로 입력해주세요.">
+            </li>
+            <li class="add">
+                <p class="mintit">휴대폰 본인 인증</p>
+                <div class="certify_box">
+                    <input type="text" maxlength='11' onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="'-'빼고 숫자만 입력해주세요"; >
+                    <a href="#" class="certify">인증요청</a>
+                </div>
+            </li>
+            <li class="addplus">
+                <div class="certify_box">
+                    <input type="text" maxlength='11' onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="인증번호를 입력해주세요">
+                    <a href="#" class="certify_add">인증하기</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="agree_box">
+            <li class="all"><p class="mintit">전체동의</p><input type="checkbox" name="" id=""></li>
+            <li class="must"><p class="strong">[필수] &nbsp;개인회원 약관에 동의</p><input type="checkbox" name="" id=""></li>
+            <li class="must"><p class="strong">[필수] &nbsp;개인정보 수집 및 이용에 동의</p><input type="checkbox" name="" id=""></li>
+            <li><p>[선택] &nbsp;위치기반서비스 이용약관에 동의</p><input type="checkbox" name="" id=""></li>
+            <li><p>[선택] &nbsp;마케팅 정보 수신 동의 - 이메일</p><input type="checkbox" name="" id=""></li>
+            <li><p>[선택] &nbsp;마케팅 정보 수신 동의 - SMS/MMS</p><input type="checkbox" name="" id=""></li>
+        </ul>
+        <a href="#" class="finish_btn">다음</a>
+        <a href="../member/join_mem.html" class="if_btn">혹시 개인 회원이신가요?</a>
+    </div>
+
+
+
+</body>
+
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const certifyButton = document.querySelector('.add .certify');
+        const addPlus = document.querySelector('.addplus');
+    
+        certifyButton.onclick = function(event) {
+            event.preventDefault(); 
+            addPlus.style.display = 'block'; 
+        };
+    });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const allCheckbox = document.querySelector('.agree_box .all input[type="checkbox"]');
+            const checkboxes = document.querySelectorAll('.agree_box input[type="checkbox"]');
+        
+            allCheckbox.onclick = function() {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = allCheckbox.checked;
+                });
+            };
+        });
+    </script>
+    <script>
+        function formatBusinessNumber(input) {
+            // 숫자만 추출
+            let value = input.value.replace(/[^0-9]/g, '');
+
+            // 하이픈 추가
+            if (value.length > 3) {
+                value = value.slice(0, 3) + '-' + value.slice(3);
+            }
+            if (value.length > 6) {
+                value = value.slice(0, 6) + '-' + value.slice(6);
+            }
+
+            // 입력값 업데이트
+            input.value = value;
+        }
+    </script>
+
+
+<!-- 회원가입 CSS -->
+
+/****************************회원가입***************************/
+.join_wrap .join_box {margin-bottom:35px;}
+.join_wrap .join_box input{display:block; padding:15px; height:56px;color:; width:100%;margin-bottom:8px; border-radius: 8px; border:1px solid #888}
+.join_wrap .tit{font-size:28px; text-align: center; margin-bottom:40px;}
+.join_wrap .join_box li{margin-bottom:24px;}
+.join_wrap .join_box .mintit{margin-bottom:8px;}
+
+.join_wrap .join_box .sex_btn {width: 100%; height : 45px; border: 1px solid #EAE7E7;border-radius: 10px}
+.join_wrap .join_box .sex_btn input[type=radio] {display: none;}
+.join_wrap .join_box .sex_btn label { display: block; border-radius: 10px; margin: 0 auto;text-align: center;height: -webkit-fill-available;line-height: 45px;}
+.join_wrap .join_box .sex_btn input[type=radio]:checked + label {background: var(--color-point); color: #fff;}
+.join_wrap .join_box .sex_btn label:hover {color: #666;}
+.join_wrap .join_box .sex_btn input[type=radio] + label {background: #F9FAFC;color: #666;color:#B5B9BD;}
+
+.join_wrap .join_box .area_btn {width: 100%; height : 45px; border: 1px solid #EAE7E7;border-radius: 10px}
+.join_wrap .join_box .area_btn input[type=radio] {display: none;}
+.join_wrap .join_box .area_btn label { display: block; border-radius: 10px; margin: 0 auto;text-align: center;height: -webkit-fill-available;line-height: 45px;}
+.join_wrap .join_box .area_btn input[type=radio]:checked + label {background: var(--color-point); color: #fff;}
+.join_wrap .join_box .area_btn label:hover {color: #666;}
+.join_wrap .join_box .area_btn input[type=radio] + label {background: #F9FAFC;color: #666;color:#B5B9BD;}
+
+.join_wrap .join_box .toggle{display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top:8px;}
+.join_wrap .join_box input::placeholder{color:#B5B9BD}
+
+.join_wrap .join_box .certify_box {display:flex; justify-content: space-between; gap:8px;}
+.join_wrap .join_box .certify_box input {width:85%;}
+.join_wrap .join_box .certify_box a{display: block; width: 33%; flex-shrink: 1; text-align: center; line-height: 56px; border-radius: 10px; background-color: #F9FAFC; height: 56px; color:#B5B9BD;border: 1px solid #EAE7E7;}
+
+.join_wrap .join_box .add{margin-bottom: 0px !important;}
+.join_wrap .join_box .addplus {display: none;}
+.join_wrap .join_box .addplus .certify_box a{color:#fff; background-color:var(--color-point);}
+
+.join_wrap .agree_box{padding:13px 25px; border: 1px solid #EAE7E7; border-radius: 8px; margin-bottom: 48px;}
+.join_wrap .agree_box input[type=checkbox]{width:18px; cursor: pointer;}
+.join_wrap .agree_box li{display: flex; justify-content: space-between; padding:10px 0px 8px;}
+.join_wrap .agree_box .all {padding-bottom: 10px; border-bottom: 1px solid #EAE7E7; margin-bottom:10px}
+.join_wrap .agree_box .all .mintit{font-size: 20px; font-weight: 500; font-weight: bold;}
+.join_wrap .agree_box .must .strong{font-weight: bold;}
+
+.join_wrap .finish_btn{display: block; width: 100%; height: 46px; line-height:46px; color:#B5B9BD; background-color: #ECEEF0; border-radius: 8px; text-align: center; margin-bottom:20px;}
+.join_wrap .if_btn{color:#555; font-size:14px; margin:0 auto 70px; border-bottom:1px solid #8E9398;display:block; width:40%; text-align: center; padding-bottom:1px; font-weight: 700;}
+
+
+.join_wrap .com_admin{display: flex; justify-content: space-between;}
+.join_wrap .com_admin input[type=checkbox]{margin-right:3px; width:15px;height:13px; display:inline-block;}
+
+.join_wrap .join_box .adress_box {display:flex; justify-content: space-between; gap:8px;}
+.join_wrap .join_box .adress_box input {width:85%;}
+.join_wrap .join_box .adress_box a{display: block; width: 55%; flex-shrink: 1; text-align: center; line-height: 56px; border-radius: 10px; background-color: #F9FAFC; height: 56px; color:;border: 1px solid #EAE7E7;}
+
